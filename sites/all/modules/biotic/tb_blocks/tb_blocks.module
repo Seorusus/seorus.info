@@ -1,0 +1,181 @@
+<?php
+
+ /**
+ * @file
+ * Enhanced control over the CSS Classes of any Block.
+ *
+ * Block Class allows users to add classes to any block through the block's
+ * configuration interface. This implementation is based on an alteration of
+ * the Core block database table to leverage the Core Block API functions,
+ * objects and structure.
+ */
+
+/**
+ * Implements hook_permission().
+ */
+function tb_blocks_permission() {
+  return array(
+    'administer themebiotic blocks' => array(
+      'title' => t('Administer Themebiotic blocks data'),
+      'description' => t('Set Data attribute for blocks.'),
+    ),
+  );
+}
+
+/*
+ * Implement hook_form_alter()
+ */
+
+function tb_blocks_form_alter(&$form, &$form_state, $form_id) {
+
+
+  if ( user_access('administer themebiotic blocks') && $form_id == 'block_admin_configure' || $form_id == 'block_add_block_form') {
+
+    // Load statically cached block object used to display block_admin_configure form.
+    $block = block_load($form['module']['#value'], $form['delta']['#value']);
+
+    if ( isset($block->bid) ) {
+
+      $tb_blocks = rawUrlEncode( json_encode( unserialize( $block->tb_blocks ) ) ) ;
+
+    } else { $tb_blocks = ""; }
+
+
+    $form['#attributes'] = array('class' => array('form-horizontal'));
+
+    $form['visibility']['tb_blocks'] = array(
+        '#type' => 'fieldset',
+        '#title' => 'Block Controls',
+        '#weight' => 1,
+        '#collapsible' => TRUE,
+        '#collapsed' => TRUE,
+    );
+
+    $form['visibility']['tb_blocks']['container_settings'] = array(
+      '#markup' => '<div id="tb-blocks-settings" class="tb-blocks-settings"></div>'
+    );
+
+    $form['tb_blocks'] = array(
+      '#type' => 'hidden',
+      // '#value' => "",
+      '#default_value' => $tb_blocks,
+      '#weight' => 99
+    );
+
+    $form['#attached']['css'] = array(drupal_get_path('module', 'tb_blocks') . '/admin/tb_blocks.css');
+
+    $form['#attached']['js']  = array(
+      drupal_get_path('module', 'tb_blocks') . '/admin/vendor.js',
+      drupal_get_path('module', 'tb_blocks') . '/admin/main.js',
+    );
+
+    $form['#submit'][] = 'tb_blocks_form_submit';
+
+
+  }
+
+
+
+}
+
+/**
+ * Helper function: additional submit callback for block configuration pages.
+ * Save supplied CSS classes.
+ */
+function tb_blocks_form_submit($form, &$form_state) {
+  if ($form_state['values']['form_id'] == 'block_admin_configure' || $form_state['values']['form_id'] == 'block_add_block_form') {
+    // Only save if value has changed.
+
+    if ( isset($form_state['values']['tb_blocks']) && user_access('administer blocks')) {
+
+      $data_values = $form_state['values']['tb_blocks'];
+
+      $data_values =  json_decode( urldecode($data_values), true );
+
+      if ( !empty($data_values) ){
+        $data = serialize( $data_values );
+      } else {
+        $data = NULL;
+      }
+
+      db_update('block')
+        ->fields(array('tb_blocks' =>  $data ))
+        ->condition('module', $form_state['values']['module'])
+        ->condition('delta', $form_state['values']['delta'])
+        ->execute();
+
+    }
+
+  }
+
+}
+
+function tb_blocks_preprocess_block(&$variables) {
+
+  $tb_blocks = unserialize($variables['elements']['#block']->tb_blocks);
+
+  $colxs          = $tb_blocks['colxs'];
+  $colsm          = $tb_blocks['colsm'];
+  $colmd          = $tb_blocks['colmd'];
+  $collg          = $tb_blocks['collg'];
+
+  $visible        = $tb_blocks['visible'];
+  $hidden         = $tb_blocks['hidden'];
+
+  $animation      = $tb_blocks['animation'];
+  $delay          = $tb_blocks['delay'];
+
+  $custom_classes = $tb_blocks['custom_classes'];
+
+
+  // ----------------------
+  // Add Responsive Classes
+  // ----------------------
+  if ($colxs) { $variables['classes_array'][] = "col-xs-".$colxs; }
+  if ($colsm) { $variables['classes_array'][] = "col-sm-".$colsm; }
+  if ($colmd) { $variables['classes_array'][] = "col-md-".$colmd; }
+  if ($collg) { $variables['classes_array'][] = "col-lg-".$collg; }
+
+  // -------------
+  // Custom Class
+  // -------------
+  if ($custom_classes) { $variables['classes_array'][] = $custom_classes; }
+
+  // --------------
+  // Visible Class
+  // --------------
+  if ($visible ) {
+    foreach ($visible as $key => $value) { $variables['classes_array'][] = "visible-".$value; }
+  }
+
+  // -------------
+  // Hidden Class
+  // -------------
+  if ($hidden ) {
+    foreach ($hidden as $key => $value) { $variables['classes_array'][] = "hidden-".$value; }
+  }
+
+  //
+  // Animation
+  //
+
+  if ($animation) {
+    $variables['attributes_array']['data-animation'][] = $animation;
+    $variables['classes_array'][] = "wow";
+    $variables['classes_array'][] = $animation;
+  }
+  //
+  // Delay
+  //
+  if ($delay) {
+    $variables['attributes_array']['data-wow-delay'][] = $delay."ms";
+  }
+
+
+
+ // if(!empty($variables['block']->attributes)) {
+ //    $variables['attributes_array'] = array_merge($variables['attributes_array'], $variables['block']->attributes);
+ //  }
+
+
+}

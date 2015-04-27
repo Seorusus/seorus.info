@@ -1,0 +1,76 @@
+<?php
+
+
+/**
+ * [tb_extra_menu description]
+ * @return [type] [description]
+ */
+function tb_extra_menu() {
+    $items['admin/biotic/webfonts'] = array(
+        'type' => MENU_CALLBACK,
+        'title' => "Google Webfonts",
+        'access callback'   => true, // available to all
+        'page callback'     => 'tb_extra_biotic_webfonts', // defined below
+        'delivery callback' => 'drupal_json_output'
+    );
+    return $items;
+}
+
+
+/**
+ * [tb_extra_biotic_webfonts description]
+ * @return [type] [description]
+ */
+function tb_extra_biotic_webfonts() {
+
+    $drupal_static = &drupal_static(__FUNCTION__);
+    $key = "webfonts";
+    if (!isset($drupal_static[$key])) {
+        $drupal_static[$key] = json_decode( file_get_contents(drupal_get_path('module', 'tb_extra')."/webfonts.json")  );
+    }
+
+    return $drupal_static[$key];
+
+    // return json_decode( file_get_contents(drupal_get_path('module', 'tb_extra')."/webfonts.json")  );
+}
+
+
+/**
+* Implements hook_entity_info_alter().
+*/
+function tb_extra_entity_info_alter(&$entity_info) {
+  $entity_info['node']['view modes']['column_one'] = array(
+    'label' => t('Column One'),
+    'custom settings' => TRUE,
+  );
+  $entity_info['node']['view modes']['column_two'] = array(
+    'label' => t('Column Two'),
+    'custom settings' => TRUE,
+  );
+  $entity_info['node']['view modes']['column_three'] = array(
+    'label' => t('Column Three'),
+    'custom settings' => TRUE,
+  );
+  $entity_info['node']['view modes']['column_four'] = array(
+    'label' => t('Column Four'),
+    'custom settings' => TRUE,
+  );
+}
+
+/**
+* Implements hook_preprocess_node().
+*/
+function tb_extra_preprocess_node(&$vars) {
+  if($vars['view_mode'] == 'column_one') {
+    $vars['theme_hook_suggestions'][] = 'node__' . $vars['type'] . '__column_one';
+  }
+  if($vars['view_mode'] == 'column_two') {
+    $vars['theme_hook_suggestions'][] = 'node__' . $vars['type'] . '__column_two';
+  }
+  if($vars['view_mode'] == 'column_three') {
+    $vars['theme_hook_suggestions'][] = 'node__' . $vars['type'] . '__column_three';
+  }
+  if($vars['view_mode'] == 'column_four') {
+    $vars['theme_hook_suggestions'][] = 'node__' . $vars['type'] . '__column_four';
+  }
+}

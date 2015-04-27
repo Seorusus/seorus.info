@@ -1,0 +1,19 @@
+name = ZENON CHILD
+description = Faster and easier web development.
+version = "7.x-1.0"
+core = 7.x
+base theme = zenon
+
+
+stylesheets[all][] = custom.css
+scripts[] = custom.js
+
+;;;;;;;;;;;;;;;;;;;;;
+;; Regions
+;;;;;;;;;;;;;;;;;;;;;
+
+regions[header]         = Header
+regions[sidebar_first]  = Sidebar first
+regions[content]        = Content
+regions[sidebar_second] = Sidebar Second
+regions[footer]         = Footer

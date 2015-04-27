@@ -1,0 +1,220 @@
+name = ZENON
+description = Faster and easier web development.
+version = "7.x-1.1"
+core = 7.x
+base theme = biotic
+
+;;;;;;;;;;;;;;;;;;;;;
+;; Regions
+;;;;;;;;;;;;;;;;;;;;;
+
+regions[full]                = Full
+regions[header_top_left]     = Header Top Left
+regions[header_top_right]    = Header Top Right
+regions[navigation]          = Navigation
+regions[header]              = Header
+regions[fullwidth_slider_1]  = Fullwidth Slider 1
+regions[static_page_title]   = Static Page Title
+regions[map_1]               = Map 1
+regions[promo_g1_one]        = Promo G1 One
+regions[promo_g2_one]        = Promo G2 One
+regions[postscript_top_1]    = Postscript Top 1
+regions[postscript_top_2]    = Postscript Top 2
+regions[postscript_top_3]    = Postscript Top 3
+regions[help]                = Help
+regions[highlighted]         = Highlighted
+regions[sidebar_first]       = Sidebar first
+regions[content]             = Content
+regions[sidebar_second]      = Sidebar Second
+regions[main_bottom_1]       = Main Bottom 1
+regions[main_bottom_2]       = Main Bottom 2
+regions[main_bottom_3]       = Main Bottom 3
+regions[ui_g1_custom_1]      = UI G1 Custom 1
+regions[ui_g1_custom_2]      = UI G1 Custom 2
+regions[ui_g2_custom_1]      = UI G2 Custom 1
+regions[ui_g2_custom_2]      = UI G2 Custom 2
+regions[bottom_fluid_1]      = Bottom Fluid 1
+regions[bottom_g1_one]       = Bottom G1 One
+regions[bottom_g2_one]       = Bottom G2 One
+regions[bottom_g3_one]       = Bottom G3 One
+regions[postscript_bottom_1] = Postscript Bottom 1
+regions[postscript_bottom_2] = Postscript Bottom 2
+regions[postscript_bottom_3] = Postscript Bottom 3
+regions[postscript_bottom_4] = Postscript Bottom 4
+regions[footer_top]          = Footer Top
+regions[footer]              = Footer
+regions[footer_bottom]       = Footer Bottom
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Scripts and Stylesheets
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;scripts[] = src/components/Modernizr/modernizr.custom.36667.js
+
+;scripts[] = src/components/jquery-throttle-debounce/jquery.ba-throttle-debounce.min.js
+
+;scripts[] = src/components/smoothscroll/dist/smoothscroll.min.js
+
+;; VIEWPORT DETECTION
+;scripts[] = src/components/jquery.inview/jquery.inview.min.js
+
+;; SUPERSLIDES
+;scripts[]           = src/components/superslides/dist/jquery.superslides.min.js
+;stylesheets[all][]  = src/components/superslides/dist/stylesheets/superslides.css
+
+;scripts[] = src/components/showup/showup.js
+
+;scripts[] = src/components/WOW/dist/wow.min.js
+
+;; PERFECT-SCROLLBAR
+;scripts[] = src/components/perfect-scrollbar/min/perfect-scrollbar.min.js
+;stylesheets[all][] =  src/components/perfect-scrollbar/min/perfect-scrollbar.min.css
+
+;; JQUERY.SCROLLTO
+;scripts[] = src/components/jquery.scrollTo/jquery.scrollTo.min.js
+
+;; JQUERY.EASING
+;scripts[] = src/components/jquery.easing/js/jquery.easing.js
+
+;; Bootstrap - javascript
+;scripts[] = src/components/sass-bootstrap/dist/js/bootstrap.min.js
+
+;; BOOTSTRAP-PROGRESSBAR
+;scripts[] = src/components/bootstrap-progressbar/bootstrap-progressbar.min.js
+;stylesheets[all][] = src/components/bootstrap-progressbar/css/bootstrap-progressbar-3.2.0.min.css
+
+; FITVIDS
+;scripts[] = src/components/fitvids/jquery.fitvids.js
+
+;; ISOTOPE
+;scripts[] = src/components/isotope/dist/isotope.pkgd.min.js
+
+;; PARALLAX
+;scripts[]  = src/components/jQuery-Parallax/scripts/jquery.parallax-1.1.3.js
+
+;; Chart.js
+;scripts[] = src/components/Chart.js/Chart.min.js
+
+;scripts[] = src/components/taggd/js/jquery.taggd.js
+;stylesheets[all][] = src/components/taggd/css/taggd.css
+
+stylesheets[all][] = assets/css/vendor.min.css
+scripts[] = assets/js/vendor.min.js
+
+
+stylesheets[all][] = assets/css/zenon.min.css
+scripts[] = assets/js/zenon.min.js
+
+
+
+;;;;;;;;;;;;;;;;;;;;;
+;; Theme Settings
+;;;;;;;;;;;;;;;;;;;;;
+settings[page_title] = 1
+settings[lock] = 0
+
+; Breadcrumbs
+; --------------
+settings[bootstrap_breadcrumb] = 1
+settings[bootstrap_breadcrumb_home] = 0
+settings[bootstrap_breadcrumb_title] = 1
+
+; Navbar
+; --------------
+settings[bootstrap_navbar_position] = ''
+settings[bootstrap_navbar_inverse] = 0
+
+; Anchors
+; --------------
+settings[bootstrap_anchors_fix] = 1
+settings[bootstrap_anchors_smooth_scrolling] = 1
+
+; Popovers
+; --------------
+settings[bootstrap_popover_enabled] = 1
+settings[bootstrap_popover_animation] = 1
+settings[bootstrap_popover_html] = 0
+settings[bootstrap_popover_placement] = 'right'
+settings[bootstrap_popover_selector] = ''
+settings[bootstrap_popover_trigger]['hover'] = 0
+settings[bootstrap_popover_trigger]['focus'] = 0
+settings[bootstrap_popover_trigger]['click'] = 'click'
+settings[bootstrap_popover_title] = ''
+settings[bootstrap_popover_content] = ''
+settings[bootstrap_popover_delay] = 0
+settings[bootstrap_popover_container] = 'body'
+
+; Tooltips
+; --------------
+settings[bootstrap_tooltip_enabled] = 1
+settings[bootstrap_tooltip_descriptions] = 1
+settings[bootstrap_tooltip_animation] = 1
+settings[bootstrap_tooltip_html] = 0
+settings[bootstrap_tooltip_placement] = 'auto left'
+settings[bootstrap_tooltip_selector] = ''
+settings[bootstrap_tooltip_trigger]['hover'] = 'hover'
+settings[bootstrap_tooltip_trigger]['focus'] = 'focus'
+settings[bootstrap_tooltip_trigger]['click'] = 0
+settings[bootstrap_tooltip_delay] = 0
+settings[bootstrap_tooltip_container] = 'body'
+
+; Advanced
+; --------------
+;settings[bootstrap_cdn] = 3.0.2
+;settings[bootstrap_bootswatch] = ''
+
+; Global
+; --------------
+settings[toggle_name] = 1
+settings[toggle_search] = 1
+
+
+;;;;;;;;;;;;;;;;;;;;;
+;; Excludes
+;;;;;;;;;;;;;;;;;;;;;
+
+; JavaScript
+; --------------
+; exclude[js][] = 'modules/contextual/contextual.js'
+
+; CSS
+; --------------
+exclude[css][] = 'misc/vertical-tabs.css'
+exclude[css][] = 'modules/aggregator/aggregator.css'
+; Necessary administrative block CSS.
+; exclude[css][] = 'modules/block/block.css'
+exclude[css][] = 'modules/book/book.css'
+exclude[css][] = 'modules/comment/comment.css'
+exclude[css][] = 'modules/dblog/dblog.css'
+exclude[css][] = 'modules/file/file.css'
+exclude[css][] = 'modules/filter/filter.css'
+exclude[css][] = 'modules/forum/forum.css'
+exclude[css][] = 'modules/help/help.css'
+exclude[css][] = 'modules/menu/menu.css'
+exclude[css][] = 'modules/node/node.css'
+exclude[css][] = 'modules/openid/openid.css'
+exclude[css][] = 'modules/poll/poll.css'
+exclude[css][] = 'modules/search/search.css'
+exclude[css][] = 'modules/statistics/statistics.css'
+exclude[css][] = 'modules/syslog/syslog.css'
+exclude[css][] = 'modules/system/maintenance.css'
+exclude[css][] = 'modules/system/system.maintenance.css'
+exclude[css][] = 'modules/system/system.menus.css'
+exclude[css][] = 'modules/system/system.messages.css'
+exclude[css][] = 'modules/system/system.theme.css'
+exclude[css][] = 'modules/taxonomy/taxonomy.css'
+exclude[css][] = 'modules/tracker/tracker.css'
+exclude[css][] = 'modules/update/update.css'
+exclude[css][] = 'modules/user/user.css'
+;exclude[css][] = 'modules/system/admin.css'
+;exclude[css][] = 'modules/system/system.css'
+;exclude[css][] = 'modules/system/system.admin.css'
+;exclude[css][] = 'modules/system/system.base.css'
+
+
+; Information
+; project status url = http://api.themebiotic.com/drupal/release_history
+project status url = http://updates.themebiotic.com/release_history
+project = "zenon"
+core = "7.x"
+version = "7.x-1.1"

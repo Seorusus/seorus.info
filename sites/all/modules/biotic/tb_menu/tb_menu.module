@@ -1,0 +1,85 @@
+<?php
+
+ module_load_include('inc', 'tb_menu', 'tb_menu.theme');
+
+/**
+ * Implements hook_block_info().
+ */
+function tb_menu_block_info() {
+  $blocks = array();
+  // for ($i = 1; $i <= variable_get('nice_menus_number', '2'); $i++) {
+  //   $blocks[$i]['info'] = variable_get('nice_menus_name_' . $i, 'Nice menu ' . $i) . ' (Nice menu)';
+  //   // We have too many things changing per user, per page to cache.
+  //   $blocks[$i]['cache'] = DRUPAL_NO_CACHE;
+  // }
+
+  $blocks[0]['info'] = "Themebiotic Menu main";
+  $blocks[0]['cache'] = DRUPAL_NO_CACHE;
+
+  return $blocks;
+}
+
+
+/**
+ * Implements hook_block_view().
+ */
+function tb_menu_block_view($delta = 1) {
+  // Build the Nice menu for the block.
+  list($menu_name, $mlid) = explode(':','main-menu:0');
+
+  $direction = 'down';
+
+  $depth = -1;
+
+  $respect_expanded = 0;
+
+  if ($output = theme('tb_menu', array(
+    'id' => $delta,
+    'menu_name' => $menu_name,
+    'mlid' => $mlid,
+    'direction' => $direction,
+    'depth' => -1,
+    'respect_expanded' => $respect_expanded))) {
+    $block['content']['#markup'] = $output['content'];
+
+
+    // If we're building the navigation block
+    // use the same block title logic as menu module.
+    global $user;
+    if ($output['subject'] == t('navigation') && $user->uid) {
+      $subject = $user->name;
+    }
+    else {
+      $subject = $output['subject'];
+    }
+
+    // $block['subject'] = "Themebiotic Main Menu";
+    $block['content']['#contextual_links']['tb_menu'] = array('admin/structure/menu/manage', array($menu_name));
+  }
+  else {
+    $block['content'] = FALSE;
+  }
+  return $block;
+}
+
+/**
+ * Builds the active trail from the page's menu data.
+ *
+ * @param array $page_menu
+ *   The menu data for a page.
+ *
+ * @return mixed
+ *   An array of parent menu item ids.
+ */
+function tb_menu_build_page_trail($page_menu) {
+  $trail = array();
+  foreach ($page_menu as $item) {
+    if ($item['link']['in_active_trail']) {
+      $trail[] = $item['link']['mlid'];
+    }
+    if ($item['below']) {
+      $trail = array_merge($trail, tb_menu_build_page_trail($item['below']));
+    }
+  }
+  return $trail;
+}

@@ -1,0 +1,50 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the block_data module.
+ */
+
+/**
+ * Implementation of hook_install().
+ */
+function tb_blocks_install(){
+  $schema['block']=array();
+  tb_blocks_schema_alter($schema);
+  foreach($schema['block']['fields'] as $field => $spec) {
+    if (db_field_exists('block', $field)) {
+      watchdog('system', t('Module install: Attempt to recreate field: "@field", when it already exists.', array('@field' => $field)), NULL, WATCHDOG_WARNING);
+    }
+    else{
+      db_add_field('block', $field, $spec);
+    }
+  }
+}
+
+/**
+ * Implementation of hook_uninstall().
+ */
+function tb_blocks_uninstall(){
+  $schema['block']=array();
+  tb_blocks_schema_alter($schema);
+  foreach($schema['block']['fields'] as $field => $specs) {
+    db_drop_field('block', $field);
+  }
+}
+
+/**
+ * Implementation of hook_schema_alter().
+ * Other modules, such as i18n_block also modify the block schema and
+ * database table structure.
+ */
+function tb_blocks_schema_alter(&$schema) {
+  if (isset($schema['block'])) {
+    $schema['block']['fields']['tb_blocks'] = array(
+    'type' => 'blob',
+      'not null' => FALSE, 
+        'size' => 'big',
+        // 'serialize' => TRUE,
+    'description' => 'Blob containing the data attributes for the block.',
+    );
+  }
+}

@@ -1,0 +1,59 @@
+<?php
+
+// MachineName Formatter
+
+/**
+ * Implements hook_field_formatter_info().
+ */
+function tb_formatter_field_formatter_info() {
+  return array(
+    // the key must be unique, so it's best to prefix with your module's name.
+    'tb_formatter_machine_name' => array(
+      // the label is is what is displayed in the select box in the UI.
+      'label' => t('Machine name'),
+      // field types is the important bit!! List the field types your formatter is for.
+      'field types' => array('taxonomy_term_reference'),
+      // You can usually leave 'multiple values' as follows:
+      'multiple values' => FIELD_BEHAVIOR_DEFAULT,
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_formatter_view(). This code just passes straight
+ * through to a theme function, tb_formatter_formatter_FORMATTER
+ * (e.g. tb_formatter_formatter_MYMODULE_absolute_url).
+ */
+function tb_formatter_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  $elements = array();
+  foreach ($items as $delta => $item) {
+    $elements[$delta] = array(
+      '#markup' => theme('tb_formatter_formatter_'. $display['type'], array('element' => $item, 'field' => $instance)),
+    );
+  }
+  return $elements;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function tb_formatter_theme() {
+  return array(
+    // The theme function that our formatter uses:
+    'tb_formatter_formatter_tb_formatter_machine_name' => array(
+      // Don't forget that all Drupal 7 theme functions have only one argument,
+      // so you declare what variables get passed within that argument instead.
+      // See http://drupal.org/node/224333#theme_changes
+      'variables' => array('element' => NULL),
+    ),
+  );
+}
+
+/**
+ * Theme function for 'tb_formatter_absolute_url' link field formatter.
+ */
+function theme_tb_formatter_formatter_tb_formatter_machine_name($element) {
+    $tax = taxonomy_term_load($element['element']['tid']);
+    $output =  strtolower( str_replace(' ', '-', $tax->name) );
+    return $output;
+}

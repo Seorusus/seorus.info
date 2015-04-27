@@ -1,0 +1,13 @@
+name = Themebiotic Extra
+description = "Google webfonts, Custom View Modes for nodes"
+package = Themebiotic
+core = "7.x"
+
+;version = "7.x-1.0"
+
+; Information
+; project status url = https://api.themebiotic.com/drupal/release_history
+project status url = http://updates.themebiotic.com/release_history
+version = "7.x-1.0-beta1"
+core = "7.x"
+project = "tb_extra"

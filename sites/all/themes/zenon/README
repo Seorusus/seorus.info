@@ -1,0 +1,21 @@
+Requirements
+============
+
+Zenon theme needs to the following modules and theme framework for work smoothly.
+
+
+Modules
+=======
+
+  * jquery_update
+  * media ( only compatible with the 7.x-2.0-alpha4 )
+  * delta
+  * tb_extra
+  * tb_blocks
+  * tb_menu
+
+
+Themes
+======
+
+  * Biotic Framework (biotic)
