@@ -2,4 +2,23 @@
 <?xml-stylesheet type="text/xsl" href="//seorus/sitemap.xsl"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url><loc>http://seorus/</loc><changefreq>daily</changefreq><priority>1.0</priority></url>
+<url><loc>http://seorus/portfolio/pryazhemania</loc><lastmod>2015-05-19T22:07Z</lastmod><changefreq>weekly</changefreq></url>
+<url><loc>http://seorus/portfolio/layla</loc><lastmod>2014-10-07T19:28Z</lastmod><changefreq>yearly</changefreq></url>
+<url><loc>http://seorus/portfolio/honey</loc><lastmod>2014-10-27T15:20Z</lastmod><changefreq>yearly</changefreq></url>
+<url><loc>http://seorus/portfolio/svetexpo</loc><lastmod>2015-05-19T21:47Z</lastmod><changefreq>weekly</changefreq></url>
+<url><loc>http://seorus/portfolio/marley</loc><lastmod>2014-10-27T15:20Z</lastmod><changefreq>yearly</changefreq></url>
+<url><loc>http://seorus/portfolio/ruby</loc><lastmod>2014-10-27T15:21Z</lastmod><changefreq>yearly</changefreq></url>
+<url><loc>http://seorus/portfolio/naholste-online-store</loc><lastmod>2015-05-19T21:46Z</lastmod><changefreq>weekly</changefreq></url>
+<url><loc>http://seorus/portfolio/sadie</loc><lastmod>2014-10-07T19:41Z</lastmod><changefreq>yearly</changefreq></url>
+<url><loc>http://seorus/portfolio/cactus-travel</loc><lastmod>2015-05-19T21:48Z</lastmod><changefreq>weekly</changefreq></url>
+<url><loc>http://seorus/portfolio/doctor-gadgets</loc><lastmod>2015-05-18T18:11Z</lastmod><changefreq>weekly</changefreq></url>
+<url><loc>http://seorus/portfolio/romeo</loc><lastmod>2014-10-27T15:22Z</lastmod><changefreq>yearly</changefreq></url>
+<url><loc>http://seorus/portfolio/akvamarket</loc><lastmod>2015-05-18T18:26Z</lastmod><changefreq>weekly</changefreq></url>
+<url><loc>http://seorus/portfolio/master-coles</loc><lastmod>2015-05-18T18:08Z</lastmod><changefreq>weekly</changefreq></url>
+<url><loc>http://seorus/templates/landing-page</loc><lastmod>2015-05-25T18:45Z</lastmod><changefreq>daily</changefreq></url>
+<url><loc>http://seorus/landing-page-coming-soon</loc><lastmod>2015-05-26T08:48Z</lastmod><changefreq>daily</changefreq></url>
+<url><loc>http://seorus/template/landing-page-landy</loc><lastmod>2015-05-26T09:42Z</lastmod><changefreq>daily</changefreq></url>
+<url><loc>http://seorus/landy-landing-page</loc><lastmod>2015-05-26T09:44Z</lastmod><changefreq>daily</changefreq></url>
+<url><loc>http://seorus/template/lending-page-responsive</loc><lastmod>2015-05-26T10:17Z</lastmod><changefreq>hourly</changefreq></url>
+<url><loc>http://seorus/lending-page-responsive</loc><lastmod>2015-05-26T10:18Z</lastmod><changefreq>hourly</changefreq></url>
 </urlset>

@@ -4171,3 +4171,8 @@ a:focus { outline: none; }
 .soon { text-shadow: rgba(0, 0, 0, 0.3) 0 0 5px; color: #fff; }
 
 h1.jumbo { /*max-width: 900px;*/ text-shadow: rgba(0, 0, 0, 0.3) 0 0 5px; color: #fff; }
+
+#field_portfolio_preview_image .col-md-8
+{ 
+  border: 15px solid rgb(239, 239, 239) !important;
+}

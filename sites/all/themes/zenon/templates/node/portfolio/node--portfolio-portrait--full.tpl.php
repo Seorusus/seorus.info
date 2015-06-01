@@ -73,8 +73,7 @@
 
       <?php if (!$has_video && !$has_images): ?>
         <?php print render($content['field_portfolio_preview_image']); ?>
-      <?php endif ?>
-
+      <?php endif ?> 
     </div>
 
     <div class="margin-sm-top-30px margin-md-top-0px col-md-4">
